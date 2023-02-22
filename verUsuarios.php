@@ -65,7 +65,7 @@ if(isset($req['generar'])){
         echo "Ya existen";
     }else{
         echo "Crear";*/
-        $con->query("CREATE TABLE CHAT (ID_EMISOR INT NOT NULL, ID_RECEPTOR INT NOT NULL, MENSAJE VARCHAR(100) NOT NULL, FECHA DATE, CONSTRAINT FK_ID_EMISOR FOREIGN KEY(ID_EMISOR) REFERENCES USUARIOS (ID),CONSTRAINT FK_ID_RECEPTOR FOREIGN KEY(ID_RECEPTOR) REFERENCES USUARIOS (ID))");
+        $con->query("CREATE TABLE CHAT (ID_EMISOR INT NOT NULL, ID_RECEPTOR INT NOT NULL, MENSAJE VARCHAR(100) NOT NULL, FECHA TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT FK_ID_EMISOR FOREIGN KEY(ID_EMISOR) REFERENCES USUARIOS (ID),CONSTRAINT FK_ID_RECEPTOR FOREIGN KEY(ID_RECEPTOR) REFERENCES USUARIOS (ID))");
     /*}
     echo "Este es el inicio de tu conversacion con ";*/
     header("location: chat.php");
@@ -87,20 +87,29 @@ else{
     </head>
     <body>
         <form action="" method="post" id="formul">
+            <h1>Bienvenido, aquí aparecen todos los usuarios con los que puedes chatear: </h1>
             <?php
 
             //$most=$con->query("SELECT * FROM USUARIOS WHERE TIPO_USUARIO='$tipo'");
             //print_r($usr);
             while($usr->fetch_assoc()){
                 foreach($usr as $key => $value){
-                //print_r($value);
-                ?>
+                    //print_r($value);
+                    ?>
+                    <div class="card mb-4" style="width: 18rem;">
+                    <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+                    <div class="card-body">
                     <div>
-                <?php
-                echo "Para iniciar una conversación con el usuario ".$value["EMAIL"]." pulsa sobre Hablar"
-                ?>
+                
+                <h5 class="chard-title"><?php echo $value['NOM_USR']?></h5>
+                <p class="card-text">Este es el <?php echo strtolower($value['TIPO_USUARIO']) ." ".$value["NOM_USR"]?> pulsa sobre generar para empezar a hablar con él
+                
                 <input type="submit" value="generar" name="<?php echo $value["ID"]?>" id="<?php echo $value["ID"]?>">
-                </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                    
                 <?php
                     }
                     

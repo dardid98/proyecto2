@@ -31,19 +31,31 @@ async function cargarMensajes(registro){
         body: registro
     });
     const data=await resp.text();
-    //alert(data);
     const mens=JSON.parse(data);
+    console.log(mens);
     mens.forEach(element => {
-        console.log(element);
-
-        var pantalla=document.getElementsByClassName("mensajeR");
-        var div=document.createElement("div");
+        //console.log(element);
+        var clase;
+        var pantalla=document.getElementsByClassName("mensajes");
+        var div2=document.createElement("div");
+        var div1=document.createElement("div");
         var mensajeDom=document.createElement("p");
+        var fecha=document.createElement("p");
+        if(element.tipo=="mensajeR"){
+            clase="btn btn-secondary btn-sm mb-1";
+        }else{
+            clase="btn btn-success btn-sm mb-1";
+        }
+        console.log(element.FECHA);
+        mensajeDom.textContent=element.MENSAJE
+        //fecha.textContent=element.FECHA;
+        //fecha.setAttribute("class","hello");
 
-        mensajeDom.textContent=element.MENSAJE;
-        div.setAttribute("class","mensaje");
-        div.append(mensajeDom);
-        pantalla[0].append(div);
+        div2.setAttribute("class",clase);
+        div2.setAttribute("disabled","disabled");
+        div1.append(div2) 
+        div2.append(mensajeDom);
+        pantalla[0].append(div1);
         
     });
     //alert(data);

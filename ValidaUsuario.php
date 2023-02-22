@@ -38,7 +38,7 @@ if(isset($_REQUEST['email']) && isset($_REQUEST['token'])){
     $mensaje = '
     <html>
     <head>
-    <title>Restablecer</title>
+    <title>Recuperar</title>
     </head>
     <body>
     <h1>GymD</h1>

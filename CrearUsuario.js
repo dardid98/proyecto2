@@ -2,7 +2,6 @@ window.addEventListener("load", ()=>{
     //Me guardo el formulario y los 2 divs que contendrán los elementos que voy a meter por dom, el submit para ponerle el prevent default y el campo select, para meterle un evento cada vez
     //que cambiamos de una opción a otra de las disponibles.
     var formul=document.getElementById("formul");
-    var submit=document.getElementById("crear");
     //var br=document.createElement("br");
 
     //
@@ -16,17 +15,34 @@ window.addEventListener("load", ()=>{
 
         let input=document.createElement("input");
         let label=document.createElement("label");
-        let br=document.createElement("br");
+        let div=document.createElement("div");
+        div.setAttribute("class","mb-2");
 
-        input.setAttribute("type","text");
         input.setAttribute("id",elementosEnt[s]);
         input.setAttribute("name",elementosEnt[s]);
-
-        label.setAttribute("for",elementosEnt[s]);
-        label.innerText=elementosEnt[s]+": ";
+        input.setAttribute("required","required");
+        input.setAttribute("class","form-control");
+        if(elementosEnt[s]=="email"){
+            input.setAttribute("type","email");
+            label.innerText="Email: ";
+        }else{
+            input.setAttribute("type","password");
+            label.innerText="Contraseña: ";
+            
+        }
         
-        formul.append(label, input,br);
+        label.setAttribute("for",elementosEnt[s]);
+        div.append(label, input);
+        
+        formul.append(div);
     }
+    let submit=document.createElement("input");
+    submit.setAttribute("type","submit");
+    submit.setAttribute("class","btn btn-danger");
+    submit.setAttribute("name","crear");
+    submit.setAttribute("id","crear");
+    submit.setAttribute("value","Crear");
+    formul.append(submit);
 
     formul.addEventListener("submit", (event)=>{
         event.preventDefault();

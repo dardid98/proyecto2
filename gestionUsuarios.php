@@ -7,7 +7,7 @@ if(isset($_REQUEST['crearUsu'])){
     $email=$_REQUEST['email'];
     $passwd=$_REQUEST['contr'];
     $passwd=password_hash($passwd,PASSWORD_DEFAULT);
-    $con->query("INSERT INTO USUARIOS VALUES(DEFAULT,'$email','$passwd','pr',2,'S',1,'S','USUARIO')");
+    $con->query("INSERT INTO USUARIOS VALUES(DEFAULT,'$email','$passwd','pr',2,'S',1,'S','ENTRENADOR')");
     
 }
 

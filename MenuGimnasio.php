@@ -11,7 +11,7 @@ if(isset($_REQUEST['volver'])){
 }
         
 if(isset($_REQUEST['chat'])){
-    header("location: GenerarChat.php");
+    header("location: verUsuarios.php");
 }
 $req=array_flip($_REQUEST);
 
@@ -37,37 +37,42 @@ if(isset($req['abrir'])){
 <body>
     <div class="capa1">
         <a href="index.php">GymBd</a>
+        <a href="modificarDatos.php">Modificar Tus Datos</a>
+        <a href="verUsuarios.php">Ver Entrenadores</a>
+        <a href="MenuGimnasio.php?volver=volver"> Cerrar Sesion</a>
+
+
     </div>
+    
     <h1>Bienvenido, en este panel aparecerán todas las rutinas disponibles</h1>
     <form action="" method="post" id="form">
 
         <?
         //$_SESSION['datos'];
             $query="SELECT * FROM RUTINAS";
-            if($result=($con->query($query)));
-            while($row=$result->fetch_assoc()){
+            $result=$con->query($query);
+            while($result->fetch_assoc()){
                     ?>
                     <div class="card mb-4" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                     <?php
-                foreach($row as $key=> $value){
-                    if($key=="NOMBRE"){
-                        ?> <h5 class="card-title"><?php echo $value?></h5><?php
-                    }
-                    if($key=="DURACION"){
-                        ?><p class="card-text"> <?php echo "Dura un total de ".$value." minutos, y ";
-                    }
-                    if($key=="DESCRIPCION"){
-                        echo $value;
-                    }
-                    if($key=="ID_ENTRENADOR"){
-                        $ids=$con->query("SELECT * FROM USUARIOS WHERE ID ='$value'");
+                foreach($result as $key => $value){
+                    
+                        ?> 
+                        <h5 class="card-title"><?php echo $value["NOMBRE"]?></h5>
+                        <p class="card-text"> <?php echo "Dura un total de ".$value['DURACION']." minutos, y ";
+                        
+                        $id=$value["ID_ENTRENADOR"];
+                        //echo $id;
+                        $ids=$con->query("SELECT * FROM USUARIOS WHERE ID ='$id'");
                         $ids=$ids->fetch_assoc();
                         echo "Realizada por el entrenador ".$ids["EMAIL"];
+                    
+                    //print_r($ids);
                         ?>
                         <div>
-                            <button type="submit" class="btn btn-danger" value="abrir" id="<?=$row['ID_RUTINA']?>" name="<?=$row['ID_RUTINA']?>">Abrir</button>
+                            <button type="submit" class="btn btn-danger" value="abrir" id="<?=$value['ID_RUTINA']?>" name="<?=$value['ID_RUTINA']?>">Abrir</button>
                         </div>  
                     </div>
                 </div>
@@ -75,7 +80,7 @@ if(isset($req['abrir'])){
                 <?
                     }
                     
-                }
+                
             }
             //$consultas=$consultas->fetch_all();
             /*echo "<br><br>";
@@ -88,8 +93,6 @@ if(isset($req['abrir'])){
                 echo "<br>";
             }*/
             ?>
-            <button type="submit" class="btn btn-success" value="chat" name="chat">Chat</button>
-            <button class="btn btn-secondary" type="submit" name="volver" value="Cerrar Sesion"> Cerrar Sesion</button>
 
     </form>
     
