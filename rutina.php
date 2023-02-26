@@ -27,20 +27,21 @@ if(isset($_REQUEST["id"])){
     <title>Rutina</title>
 </head>
 
-<body>
-  <div class="capa1">
+<body class="usuario">
+  <div class="HeaderUsuario">
     <a href="index.php">GymBd</a>
   </div>
-  <div class="btn btn-secondary">
-    <a href="MenuGimnasio.php">Regresar</a>
-  </div>
-  <div class="capa2"> 
-    <div class="card">
-      <div class="card-body">
-        <iframe width="560" height="315" src="<?php echo $consulta['URL']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h2 class="card-title"><?php echo $consulta['NOMBRE']?></h2>
-        <p class="card-text"><?php echo $consulta['DESCRIPCION']?></p>
-        <a href="#" class="btn btn-danger">Al Lío</a>
+  <div class="d-flex justify-content-center align-items-center container">
+      <div class="capa2"> 
+      <div class="card">
+        <div class="card-body">
+          <iframe width="840" height="540" src="<?php echo $consulta['URL']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <h2 class="card-title"><?php echo $consulta['NOMBRE']?></h2>
+          <p class="card-text"><?php echo $consulta['DESCRIPCION']?></p>
+          <div>
+            <a href="MenuGimnasio.php"  class="btn btn-secondary">Regresar</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

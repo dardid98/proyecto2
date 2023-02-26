@@ -1,6 +1,6 @@
 <?php
 
-include "./includes/loginDatos.php";
+include "loginDatos.php";
 session_start();
 
 $email=$_SESSION['datos'][0];
@@ -16,7 +16,10 @@ if($datosUsu->num_rows==0){
     
 }else{
     $datosUsu=$datosUsu->fetch_assoc();
-    if(password_verify($passwd,$datosUsu["CONTRASENA"]));
+    if(!password_verify($passwd,$datosUsu["CONTRASENA"])){
+        session_destroy();
+        header("location: index.php");
+    }
 }
 
 

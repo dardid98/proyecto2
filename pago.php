@@ -4,12 +4,14 @@ session_start();
 
     if(isset($_REQUEST['Pagar'])){
         $id=$_SESSION['ID'];
-        echo $id;
+        //echo $id;
         $con->query("UPDATE USUARIOS SET TARIFA_PAGADA='S' WHERE ID_USUARIO='$id'");
     }
     if(isset($_REQUEST['Rechazar'])){
         header("location: index.php");
     }
+    
+    
 ?>
 
 
@@ -53,5 +55,9 @@ if(isset($_REQUEST['tarifa'])){
 ?>
 
 </form>
-</body>
-</html>
+
+<?
+
+
+
+

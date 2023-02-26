@@ -2,6 +2,7 @@
 
 include "./includes/loginDatos.php";
 include "./ValidaUsuario.php";
+include "./includes/crearTablas.php";
 session_start();
 
 /*

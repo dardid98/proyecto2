@@ -2,10 +2,24 @@
 
 require "./includes/comprobarSesion.php";
 require "./includes/loginDatos.php";
+include "./includes/crearTablas.php";
+
 
 
 $idE=$_SESSION['chat']['emisor'];
 $idR=$_SESSION['chat']['receptor'];
+
+$consE=$con->query("SELECT * FROM USUARIOS WHERE ID='$idE'");
+$consR=$con->query("SELECT * FROM USUARIOS WHERE ID='$idR'");
+
+$consE=$consE->fetch_assoc();
+$consR=$consR->fetch_assoc();
+
+if($consE['TIPO_USUARIO']=="ENTRENADOR"){
+    $varSalida="MenuEntrenador.html";
+}else if($consE['TIPO_USUARIO']=="USUARIO"){
+    $varSalida='MenuGimnasio.php';
+}
 
 
 if(isset($_REQUEST['salir'])){
@@ -71,21 +85,29 @@ if(isset($_REQUEST['mostrar'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
-<body>
-    <div class="chat">
-        <h1>Bienvenido<?php echo $idE?>, este es tu registro de mensajes con <?php echo $idR?> </h1>
-        <form action="" method="post" id="formulario">
-            <div class="mensajes">
-                
-            </div>
-            <div class="enviar">
-                <input type="text" id="mensaje" name="mensaje">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
-        <form action="" method="post">
-            <button type="submit" name="salir" id="salir">Salir</button>
-        </form>
+<body class="chat">
+    <div class="HeaderChat">
+        <a href="index.php">Inicio</a>
+    </div>
+    <div class="container">
+        <div class="capa2">
+            <h3 class="text-success">Bienvenido <?php echo $consE['NOM_USR']?>, este es tu registro de mensajes con <?php echo $consR['NOM_USR']?> </h3>
+            <form action="" method="post" id="formulario">
+                <div class="mensajes mb-3">
+                    
+                </div>
+                <div class="form-group mb-2">
+                    <label for="mensaje" class="text-primary">Introduce aquí tu siguiente Mensaje: </label>
+                    <input type="text" class="form-control" id="mensaje" name="mensaje">
+                </div>
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+            <form action="" method="post">
+                <a href="<?php echo $varSalida?>" class="btn btn-secondary">Salir</a>
+            </form>
+        </div>
     </div>
 </body>
 </html>

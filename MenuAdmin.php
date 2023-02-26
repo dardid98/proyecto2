@@ -3,6 +3,8 @@
 
 include "includes/loginDatos.php";
 include "./includes/comprobarSesion.php";
+include "./includes/crearTablas.php";
+
 
 
 $resultadosUsu=$con->query("SELECT * FROM USUARIOS");
@@ -31,11 +33,15 @@ if(isset($_REQUEST['volver'])){
     <script src="MenuAdmin.js"></script>
 </head>
 
-<body>
-    
+<body class="administrador">
+    <div class="HeaderAdmin">
+        <a href="index.php">Inicio</a>
+
+    </div>
+    <div class="contenedor">
     <form action="" method="post" id="formUsu">
-        <table border="1px solid black" class="table table-dark table-hover table-striped">
-            Usuarios registrados:
+        <table class="table table-dark table-hover table-striped">
+            <h1 class="mb-3">Usuarios registrados:</h1>
             <tr>
                 <?php
             $thead=$resultadosUsu->fetch_assoc();
@@ -70,10 +76,9 @@ if(isset($_REQUEST['volver'])){
         </table>
         <button class="btn btn-danger" type="submit" value="Eliminar" id="delUsu"> Eliminar</button>
         <button class="btn btn-info" type="submit" name="volver" value="Cerrar Sesion"> Cerrar Sesion</button>
-        </form>
-        <a href="CrearUsuario.html">Anadir Entrenador a la Base de Datos</a>
-        
+        <a href="CrearUsuario.html" class="btn btn-warning">Añadir Entrenador a la Base de Datos</a>
     </form>
+</div>
     
 </body>
 </html>

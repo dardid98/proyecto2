@@ -18,8 +18,9 @@ async function postData(formattedFormData){
     });
     const data=await resp.text();
 
-    alert(data);
+    //alert(data);
     if(data=="no"){
+        alert("no eres un entrenador, no puedes hacer esto");
         window.location.href="index.php";
     }
     window.location.href="MenuEntrenador.html";

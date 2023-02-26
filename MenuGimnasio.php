@@ -2,8 +2,20 @@
 
 require "./includes/loginDatos.php";
 require "./includes/comprobarSesion.php";
+include "./includes/crearTablas.php";
 
 
+$fech2=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email' ");
+$fech2=$fech2->fetch_assoc();
+if($fech2['TIPO_USUARIO']=="ENTRENADOR" || $fech2['TIPO_USUARIO']=="ADMIN"){
+    header("location: index.php");
+}
+$fech2=strtotime($fech2["FECHA_VENCIMIENTO"]);
+
+$fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
+if($fecha_actual>= $fech2){
+    $con->query("UPDATE USUARIOS SET ID_TARIFA=1 WHERE EMAIL='$email'");
+}
 
 if(isset($_REQUEST['volver'])){
     session_destroy();
@@ -34,17 +46,18 @@ if(isset($req['abrir'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
-<body>
-    <div class="capa1">
+<body class="usuario">
+    <div class="HeaderUsuario">
         <a href="index.php">GymBd</a>
         <a href="modificarDatos.php">Modificar Tus Datos</a>
-        <a href="verUsuarios.php">Ver Entrenadores</a>
+        <a href="verEntrenadores.php">Ver Entrenadores</a>
         <a href="MenuGimnasio.php?volver=volver"> Cerrar Sesion</a>
+        <a href="nuevoPago.php?revisar=revisar">Revisar Tarifa</a>
 
 
     </div>
-    
-    <h1>Bienvenido, en este panel aparecerán todas las rutinas disponibles</h1>
+    <div class="container">
+    <h1>Rutinas disponibles: </h1>
     <form action="" method="post" id="form">
 
         <?
@@ -53,27 +66,35 @@ if(isset($req['abrir'])){
             $result=$con->query($query);
             while($result->fetch_assoc()){
                     ?>
-                    <div class="card mb-4" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
                     <?php
                 foreach($result as $key => $value){
                     
-                        ?> 
+                    ?> 
+                    <div class="card mb-4" style="width: 100%;">
+                    <div class="card-body">
                         <h5 class="card-title"><?php echo $value["NOMBRE"]?></h5>
-                        <p class="card-text"> <?php echo "Dura un total de ".$value['DURACION']." minutos, y ";
+                        <p class="card-text"> <?php echo "Dura un total de ".$value['DURACION']." minutos, y ha sido ";
                         
                         $id=$value["ID_ENTRENADOR"];
                         //echo $id;
                         $ids=$con->query("SELECT * FROM USUARIOS WHERE ID ='$id'");
                         $ids=$ids->fetch_assoc();
-                        echo "Realizada por el entrenador ".$ids["EMAIL"];
+                        echo "realizada por el entrenador ".$ids["EMAIL"];
                     
                     //print_r($ids);
+                    $tip_tar=$con->query("SELECT ID_TARIFA FROM USUARIOS WHERE EMAIL='$email'");
+                    $tip_tar=$tip_tar->fetch_assoc();
+                        if($tip_tar['ID_TARIFA']==1){
+
+                        }
+                        else{
                         ?>
                         <div>
-                            <button type="submit" class="btn btn-danger" value="abrir" id="<?=$value['ID_RUTINA']?>" name="<?=$value['ID_RUTINA']?>">Abrir</button>
+                            <button type="submit" class="btn btn-success" value="abrir" id="<?=$value['ID_RUTINA']?>" name="<?=$value['ID_RUTINA']?>">Abrir</button>
                         </div>  
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 
@@ -95,7 +116,7 @@ if(isset($req['abrir'])){
             ?>
 
     </form>
-    
+    </div>
 
 </body>
 </html>

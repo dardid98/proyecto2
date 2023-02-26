@@ -17,7 +17,7 @@ window.addEventListener("load", ()=>{
         let label=document.createElement("label");
         let div=document.createElement("div");
         div.setAttribute("class","mb-2");
-
+        
         input.setAttribute("id",elementosEnt[s]);
         input.setAttribute("name",elementosEnt[s]);
         input.setAttribute("required","required");
@@ -32,17 +32,22 @@ window.addEventListener("load", ()=>{
         }
         
         label.setAttribute("for",elementosEnt[s]);
+        label.setAttribute("class","text-danger");
         div.append(label, input);
         
         formul.append(div);
     }
+    let a=document.createElement("a");
+    a.setAttribute("href", "MenuAdmin.php");
+    a.setAttribute("class", "btn btn-secondary");
+    a.innerText="Regresar";
     let submit=document.createElement("input");
     submit.setAttribute("type","submit");
     submit.setAttribute("class","btn btn-danger");
     submit.setAttribute("name","crear");
     submit.setAttribute("id","crear");
     submit.setAttribute("value","Crear");
-    formul.append(submit);
+    formul.append(submit, a);
 
     formul.addEventListener("submit", (event)=>{
         event.preventDefault();

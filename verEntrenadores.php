@@ -5,9 +5,11 @@ include "./includes/comprobarSesion.php";
 
 $fech2=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email' ");
 $fech2=$fech2->fetch_assoc();
-if($fech2['TIPO_USUARIO']=="USUARIO" || $fech2['TIPO_USUARIO']=="ADMIN"){
+if($fech2['TIPO_USUARIO']=="ENTRENADOR" || $fech2['TIPO_USUARIO']=="ADMIN"){
     header("location: index.php");
 }
+
+
 /*$cons=$con->query("SELECT * FROM USUARIOS WHERE ID='$id' AND EMAIL='$email'");
 if($cons->num_rows==0){
     $usuarios=$con->query("SELECT * FROM ENTRENADORES");
@@ -83,7 +85,7 @@ else{
     <body class="chat">
         <div class="HeaderChat">
             <a href="index.php">GymBd</a>
-            <a href="MenuEntrenador.html">Regresar</a>
+            <a href="MenuGimnasio.php">Regresar</a>
         </div>
         <div class="container">
             <form action="" method="post" id="formul">
