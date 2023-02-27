@@ -6,6 +6,7 @@ session_start();
         $id=$_SESSION['ID'];
         //echo $id;
         $con->query("UPDATE USUARIOS SET TARIFA_PAGADA='S' WHERE ID_USUARIO='$id'");
+        header("location: index.php");
     }
     if(isset($_REQUEST['Rechazar'])){
         header("location: index.php");
@@ -23,7 +24,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <form action="" method="post">
@@ -34,7 +35,7 @@ session_start();
 
 
 if(isset($_REQUEST['tarifa'])){
-    print_r($_REQUEST);
+    //print_r($_REQUEST);
     $tarifa=$_REQUEST['tarifa'];
     
     $res=$con->query("SELECT * FROM TARIFAS WHERE ID_TARIFA='$tarifa'");
@@ -47,7 +48,7 @@ if(isset($_REQUEST['tarifa'])){
         </div>    
         <div>
             <button type="submit" class="btn btn-primary" name="Pagar">Pagar</button>
-            <button type="submit" class="btn btn-primary" name="Rechazar">Rechazar</button>
+            <button type="submit" class="btn btn-secondary" name="Rechazar">Rechazar</button>
         </div>
     <?php
 }

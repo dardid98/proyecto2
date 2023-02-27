@@ -74,14 +74,22 @@ if(isset($_REQUEST['registro'])){
     $tarifa=$_REQUEST['TarifaSeleccionada'];
     $nom_usr=$_REQUEST['nom_usr'];
     $passwd=password_hash($passwd,PASSWORD_DEFAULT);
-
+    $fecha=date_create("now");
+    
+    switch($tarifa){
+        case 1: $fecha = null; break;
+        case 2: date_add($fecha, date_interval_create_from_date_string("1 months")); break;
+        case 3: date_add($fecha, date_interval_create_from_date_string("3 months")); break;
+        case 4: date_add($fecha, date_interval_create_from_date_string("12 months")); break;
+    }
+    $fecha=$fecha->format('Y-m-d H:i:s');
 
     //$passwd=password_hash($_REQUEST['passwd'],PASSWORD_DEFAULT);
     $numcont=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email'");
     $numcont=$numcont->num_rows;
     if($numcont==0){
 
-        if($con->query("INSERT INTO USUARIOS VALUES (DEFAULT,'$email','$passwd','$nom_usr','$imc','N','$tarifa','N','USUARIO', DEFAULT, DEFAULT)")){
+        if($con->query("INSERT INTO USUARIOS VALUES (DEFAULT,'$email','$passwd','$nom_usr','$imc','N','$tarifa','N','USUARIO', DEFAULT, '$fecha')")){
             $enviado =false;
             if(mail($para, $título, $mensaje, $cabeceras)){
                 $enviado=true;

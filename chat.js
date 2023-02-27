@@ -2,7 +2,10 @@ window.addEventListener("load", ()=>{
     var formulario=document.getElementById("formulario");
     const registro=new FormData();
     registro.append("mostrar", "mostrar");
-    cargarMensajes(registro);
+    setTimeout(() => {
+        
+        cargarMensajes(registro);
+    }, 500);
     
     
     formulario.addEventListener("submit", (event)=>{
