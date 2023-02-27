@@ -81,7 +81,7 @@ if(isset($_REQUEST['registro'])){
     $numcont=$numcont->num_rows;
     if($numcont==0){
 
-        if($con->query("INSERT INTO USUARIOS VALUES (DEFAULT,'$email','$passwd','$nom_usr','$imc','N','$tarifa','N','USUARIO')")){
+        if($con->query("INSERT INTO USUARIOS VALUES (DEFAULT,'$email','$passwd','$nom_usr','$imc','N','$tarifa','N','USUARIO', DEFAULT, DEFAULT)")){
             $enviado =false;
             if(mail($para, $título, $mensaje, $cabeceras)){
                 $enviado=true;

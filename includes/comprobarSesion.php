@@ -3,6 +3,11 @@
 include "loginDatos.php";
 session_start();
 
+
+if(!isset($_SESSION['datos'])){
+    header("location: index.php");
+}
+
 $email=$_SESSION['datos'][0];
 $passwd=$_SESSION['datos'][1];
 

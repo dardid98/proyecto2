@@ -78,7 +78,7 @@ if(isset($_REQUEST['nuevo'])){
                 </select>
             </div>
             <button type="submit" class="btn btn-success" name="nuevPagar">Pagar</button>
-            <button type="submit" class="btn btn-secondary" name="cancelar">Cancelar</button>
+            <a href="MenuGimnasio.php" class="btn btn-secondary">Cancelar</a>
         </div>
     </div>
 </form>
@@ -116,7 +116,7 @@ if(isset($_REQUEST['revisar'])){
                 </select>
             </div>
             <button type="submit" class="btn btn-success" name="extender">Extender</button>
-            <button type="submit" class="btn btn-secondary" name="cancelar">Cancelar</button>
+            <a href="MenuGimnasio.php" class="btn btn-secondary">Cancelar</a>
         </div>
     </div>
 </form>

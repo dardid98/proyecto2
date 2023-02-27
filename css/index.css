@@ -1,0 +1,59 @@
+.header{
+    background-color: orangered;
+    padding: 13px;
+    border-bottom: 3px solid white;
+}
+.header>h1{
+    color: white;
+    text-align: center;
+}
+body{
+    background-image: url("https://architect.bjc.es/wp-content/uploads/2019/06/90078304_m.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgb(16, 0, 85);
+}
+.subheader{
+    
+    padding-top: 10px;
+    text-align: center;
+}
+.subheader>a{
+
+    color: white;
+    font-size: 33px;
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+
+.body{
+    padding: 15%;
+}
+.mini{
+    background-color: orangered;
+    color: orangered;
+    font-size: 20px;
+}
+.dest{
+    color: orangered;
+    font-size: 50px;
+    font-weight: bold;
+}
+.dest2{
+    font-size: 50px;
+
+}
+.body>h1{
+    color: white;
+}
+.cookies{
+    border: 4px solid black;
+    background-color: white;
+    position: sticky;
+    padding: 10px;
+    margin-top: 36%;
+}

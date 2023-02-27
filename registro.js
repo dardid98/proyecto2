@@ -1,20 +1,14 @@
 window.addEventListener("load",()=>{
     var formulario=document.getElementById("form");
     //const env=document.getElementById("enviar");
-    var peso;
-    var altura;
-    //var email;
-    var tarifas;
     
     formulario.addEventListener("submit", function(event){
         event.preventDefault();
-        peso=document.getElementById("peso").value;
-        altura=document.getElementById("altura").value;
-        passwd=document.getElementById("passwd").value;
-        nom_usr=document.getElementById("nom_usr").value;
-        tarifas=document.getElementById("tarifas").value;
-        peso=document.getElementById("peso").value;
-        altura=document.getElementById("altura").value;
+        var peso=document.getElementById("peso").value;
+        var altura=document.getElementById("altura").value;
+        var tarifas=document.getElementById("tarifas").value;
+        var peso=document.getElementById("peso").value;
+        var altura=document.getElementById("altura").value;
         
         /*if(peso==""||altura=="" || email==""|| passwd==""||nom_usr==""||genero==""|| edad=="" || tarifas==""){ //Comprobamos que las variables tienen contenido
             alert("No dejes ningún campo en blanco")
@@ -34,7 +28,7 @@ window.addEventListener("load",()=>{
                 formattedFormData.append("imc",imctipo);
                 formattedFormData.append("registro", "registro");
                 formattedFormData.append("TarifaSeleccionada",tarifas);
-                console.log(formattedFormData);
+                console.log(tarifas);
                 postData(formattedFormData, tarifas);
                 //alert(tarifas);
            // }
@@ -49,7 +43,7 @@ async function postData(formattedFormData, tarifas){
         body: formattedFormData,
         
     });
-    const data=await resp.json();
+    const data=await resp.text();
     alert(data);
     switch (data){
         case "b": alert("Has sido registrado en la base de datos, comprueba tu correo electronico y pulsa en el enlace del mensaje para validar tu usuario");
