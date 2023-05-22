@@ -1,0 +1,140 @@
+header{
+    background-color: orangered;
+    padding: 13px;
+    border-bottom: 3px solid white;
+    text-align: center;
+}
+header>a{
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+}
+body{
+    background-color: rgb(160, 139, 255);
+    margin: 0;
+
+}
+nav{
+    
+    padding-top: 10px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+
+}
+nav>a{
+
+    color: white;
+    font-size: 33px;
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+
+}
+a:hover{
+    color: orangered;
+}
+
+main{
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+
+}
+.mini{
+    background-color: orangered;
+    color: orangered;
+    font-size: 20px;
+}
+.dest{
+    color: orangered;
+    font-size: 50px;
+    font-weight: bold;
+}
+.dest2{
+    font-size: 50px;
+
+}
+main>section>h1{
+    color: white;
+    display: block;
+}
+footer.cookies{
+    border: 4px solid black;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+}
+.ifRech{
+    display: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+
+
+  /* Establecer el alto mínimo del cuerpo a 100% del alto visible de la ventana y centrar vertical y horizontalmente los elementos internos */
+  /* Contenedor principal que tendrá un ancho máximo de 650px y ocupará el 100% del ancho disponible, además de tener una altura fija de 430px, fondo blanco, sombra y bordes redondeados y rojos*/
+  .wrapper {
+    display: grid;
+    max-width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 5px;
+  }
+  /* Establecer las propiedades del botón de navegación (anterior y siguiente), incluyendo su posición absoluta en relación al contenedor principal, su estilo de círculo con texto centrado, el color de fondo y el tamaño de la fuente, entre otras */
+  .wrapper i.button {
+    position: absolute;
+    top: 5%;
+    transform: translateY(-50%);
+    height: 35px;
+    width: 35px;
+    background-color: #343f4f;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.3s linear;
+    z-index: 100;
+    cursor: pointer;
+  }
+  /* Reducir la escala del botón activo (presionado) y ajustar su posición verticalmente */
+  i.button:active {
+    transform: scale(0.94) translateY(-50%);
+  }
+  /* Establecer la posición del botón "anterior" y "siguiente" en relación al contenedor principal */
+  i#prev {
+    left: 10px;
+  }
+  i#next {
+    right: 10px;
+  }
+  /* Establecer la altura del contenedor de la imagen, su ancho máximo y ancho total, y hacer que el desbordamiento sea oculto para que no haya desbordamiento de imagen */
+  .image-container {
+    overflow: hidden;
+  }
+  /* Establecer el estilo del carrusel, que será un contenedor flexible de imágenes que cambiará su posición para mostrar la imagen actual, todo esto con una transición suave */
+  .image-container .carousel {
+    display: flex;
+    transition: all 1.5s ease;
+    flex-wrap: nowrap;
+  }
+  /* Establecer el estilo de la imagen en el carrusel, incluyendo el tamaño de la imagen, el borde redondeado, el tamaño del borde, el ajuste de objeto y el hecho de que cubrirá el contenedor de imagen */
+  .carousel img {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+  }

@@ -2,15 +2,19 @@
 
 include "loginDatos.php";
 
-if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymdALTER' AND table_name = 'TARIFAS'")){
-    $con->query("CREATE TABLE TARIFAS (ID_TARIFA INT AUTO_INCREMENT PRIMARY KEY NOT NULL, PRECIO INT NOT NULL, PLAN_DE_PAGO VARCHAR(10))");
+$fecha=date_create();
+date_add($fecha, date_interval_create_from_date_string("120 month"));
+$fecha=$fecha->format('Y-m-d H:i:s');
+
+
+if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymd' AND table_name = 'TARIFAS'")){
+    $con->query("CREATE TABLE TARIFAS (ID_TARIFA INT AUTO_INCREMENT PRIMARY KEY NOT NULL, PRECIO INT NOT NULL, PLAN_DE_PAGO VARCHAR(10), NOMBRE_TARIFA VARCHAR(10))");
 }
 if($consTarifas=$con->query("SELECT * FROM TARIFAS")){
     if(mysqli_num_rows($consTarifas)==0){
-    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,0,'gratis')");
-    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,20,'mensual')");
-    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,50,'trimestral')");
-    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,100,'anual')");
+    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,0,'no', 'Gratis')");
+    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,60,'Anual', 'Veterano')");
+    $con->query("INSERT INTO TARIFAS VALUES (DEFAULT,90,'Anual', 'Novato')");
     }
 }
 if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymd' AND table_name = 'USUARIOS'")){
@@ -20,15 +24,18 @@ $passwd=password_hash("hola",PASSWORD_DEFAULT);
 if($consAdm=$con->query("SELECT * FROM USUARIOS WHERE TIPO_USUARIO='ADMIN'")){
     if(mysqli_num_rows($consAdm)==0){
         $con->query("INSERT INTO USUARIOS VALUES (DEFAULT, 'hola@hola', '$passwd','ADM', '0', 'S', '1', 'S','ADMIN',DEFAULT, DEFAULT)");
-        $con->query("INSERT INTO USUARIOS VALUES (DEFAULT, 'hola@hola2', '$passwd','ADM', '0', 'S', '1', 'S','USUARIO', DEFAULT, DEFAULT)");
-        $con->query("INSERT INTO USUARIOS VALUES (DEFAULT, 'hola@hola3', '$passwd','ADM', '0', 'S', '1', 'S','ENTRENADOR', DEFAULT, DEFAULT)");
+        $con->query("INSERT INTO USUARIOS VALUES (DEFAULT, 'hola@hola2', '$passwd','USER', '0', 'S', '1', 'S','USUARIO', DEFAULT, '$fecha')");
+        $con->query("INSERT INTO USUARIOS VALUES (DEFAULT, 'hola@hola3', '$passwd','TRAIN', '0', 'S', '1', 'S','ENTRENADOR', DEFAULT, '$fecha')");
     }
 }
 if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymd' AND table_name = 'RUTINAS'")){
     $con->query("CREATE TABLE RUTINAS (ID_RUTINA INT AUTO_INCREMENT PRIMARY KEY NOT NULL, NOMBRE VARCHAR(20) NOT NULL, DURACION INT NOT NULL, DESCRIPCION VARCHAR(400), ID_ENTRENADOR INT NOT NULL, CONSTRAINT FK_ID FOREIGN KEY(ID_ENTRENADOR) REFERENCES USUARIOS(ID))");
 }
 if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymd' AND table_name = 'REGISTRO_RUTINAS'")){
-    $con->query("CREATE TABLE REGISTRO_RUTINAS (ID_RUTINA INT NOT NULL, ID_USUARIO INT NOT NULL, COMPLETADA VARCHAR(2) NOT NULL, CONSTRAINT FK_ID_USUARIO FOREIGN KEY(ID_USUARIO) REFERENCES USUARIOS(ID), CONSTRAINT FK_ID_RUTINA FOREIGN KEY(ID_RUTINA) REFERENCES RUTINAS(ID_RUTINA))");
+    $con->query("CREATE TABLE REGISTRO_RUTINAS (ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL ,ID_RUTINA INT NOT NULL, ID_USUARIO INT NOT NULL, COMPLETADA VARCHAR(2) NOT NULL, FECHA_COMPLETADA TIMESTAMP DEFAULT CURRENT_TIMESTAMP, CONSTRAINT FK_ID_USUARIO FOREIGN KEY(ID_USUARIO) REFERENCES USUARIOS(ID), CONSTRAINT FK_ID_RUTINA FOREIGN KEY(ID_RUTINA) REFERENCES RUTINAS(ID_RUTINA))");
+}
+if($con->query("SELECT * FROM information_schema. tables WHERE table_schema = 'id20260728_gymd' AND table_name = 'RECUPERAR'")){
+    $con->query("CREATE TABLE RECUPERAR (ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL, EMAIL VARCHAR(30) NOT NULL, TOKEN VARCHAR(20) NOT NULL, CODIGO INT NOT NULL, FECHA TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP)");
 }
 
 ?>

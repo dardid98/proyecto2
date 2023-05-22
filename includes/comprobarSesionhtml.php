@@ -5,7 +5,7 @@ session_start();
 
 
 if(!isset($_SESSION['datos'])){
-    header("location: index.php");
+    echo "mal";
 }
 
 $email=$_SESSION['datos'][0];
@@ -13,19 +13,19 @@ $passwd=$_SESSION['datos'][1];
 
 
 $datosUsu=$con->query("SELECT * FROM USUARIOS WHERE EMAIL = '$email'");
-
+$datosFila=$datosUsu->fetch_assoc();
 
 if($datosUsu->num_rows==0){
     
     session_destroy();
-    header("location: index.php");
+    echo "mal";
+    
+}else if(!password_verify($passwd,$datosFila["CONTRASENA"])){
+        session_destroy();
+        echo "mal";
     
 }else{
-    $datosUsu=$datosUsu->fetch_assoc();
-    if(!password_verify($passwd,$datosUsu["CONTRASENA"])){
-        session_destroy();
-        header("location: index.php");
-    }
+    echo "bien";
 }
 
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="CrearRutina.js"></script>
+    <title>Creacion Rutinas</title>
+    <script src="comprobarSesion.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="entrenador">
+    <header class="Entrenador">
+        <nav>
+            <a href="index.php">Inicio</a>
+        </nav>
+    </header>
+    <main class="d-flex justify-content-center align-items-center container">
+        <form action="" method="post" id="formul">
+            <article class="cuerpo">
+                <section class="mb-3 text-warning">
+                    <h2>Crear Rutina</h2>
+                </section>
+                <section class="form-group mb-2">
+                    <label class="text-light" for="nombre">Nombre Rutina: </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Rutina ">
+                </section>
+
+                <section class="form-group mb-2">
+                    <label class="text-light" for="duracion">Duracion (minutos)</label>
+                    <input type="number" class="form-control" name="duracion" id="duracion"  placeholder="Duracion (en minutos)" min="0">
+                </section>
+
+                <section  class="form-group mb-2">
+                    <label for="descripcion" class=" text-light">Descripción de la Rutina: </label>
+                    <textarea name="descripcion" class="form-control" id="descripcion" aria-label="Descripcion" placeholder="Descripción"></textarea>
+                </section>
+
+                <section class="form-group mb-2">
+                    <label class="text-light" for="url">Url Rutina</label>
+                    <input type="text" class="form-control" name="url" id="url" placeholder="Url Vídeo de la rutina">
+                </section>
+
+                <section>
+                    <button type="submit" class="btn btn-warning" id="crear" name="crear">Crear</button>
+                    <a href="MenuEntrenador.php" class="btn btn-secondary" >Regresar</a>
+                </section>
+
+            </article>
+        </form>
+        
+    </main>
+
+</body>
+</html>
