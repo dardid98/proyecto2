@@ -1,0 +1,212 @@
+/* Contenedor global */
+.container{
+    padding-top: 2%;
+} 
+
+/* Páginas con formularios */
+header.Inicio{
+    padding: 14px;
+    border-bottom: 3px solid black;
+    background-color: #ffa600;
+}
+nav>a{
+    text-decoration: none;
+    font-size: 20px;
+}
+ul>li>a{
+    text-decoration: none;
+    font-size: 20px;
+}
+ul{
+    list-style: none;
+}
+ul>li{
+    display: inline;
+}
+.cuerpo{
+    padding:50px;
+    background-color: #222;
+    border: 1px solid white;
+}
+
+/* Páginas de Entrenador */
+header.Entrenador{
+    padding: 14px;
+    border-bottom: 3px solid black;
+    background-color: rgb(250, 213, 50);
+    
+}
+
+.entrenador{
+    background-color: rgb(255, 232, 128);
+
+}
+
+/* Páginas Administrador*/
+header.Admin{
+    padding: 14px;
+    border-bottom: 3px solid black;
+    background-color: #b60000;
+}
+.administrador{
+    background-color: rgb(255, 126, 126);
+}
+.contenedor{
+    padding: 10px;
+}
+
+/* Páginas usuario */
+
+header.Usuario{
+    padding: 14px;
+    border-bottom: 3px solid black;
+    background-color: #004414;
+}
+.usuario{
+    background-color: rgb(129, 255, 167);
+}
+
+
+/* Imagen de fondo 1 */ 
+.login{
+
+    background-color: rgb(133, 176, 255);
+
+}
+.registro{
+    background-color:rgb(129, 255, 167)
+}
+
+/* Imagen de fondo 2*/
+
+.tarifas{
+background-color: rgb(255, 247, 132);
+}
+
+.recuperar{
+    background-color: rgb(1, 24, 24);
+}
+
+.btn>a{
+    text-decoration: none;
+    color:white;
+}
+
+.enviar{
+    border: 1px solid red;
+
+}
+
+/* Chat  */
+
+header.Chat{
+    padding: 14px;
+    border-bottom: 3px solid black;
+    background-color: lightgreen;
+}
+/*.chat{
+    background-image: url("7_cosas_que_haces_mal_despuésde-entrenar-2440314758");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: lightgreen;
+}*/
+.mensajeE{
+    border: 1px solid black;
+    border-radius: 30px 30px 5px 30px;
+    background-color: lightgreen;
+    padding: 1%;
+    text-align: right;
+}
+.mensajeR{
+    border: 1px solid black;
+    border-radius: 5px 30px 30px 30px;
+    background-color: grey;
+    padding: 1%;
+    text-align: left;
+}
+.mensajes{
+    padding: 5px;
+    background-color: white;
+    height: 300px;
+    overflow: hidden;
+}
+.mensajes:hover{
+    overflow: auto;
+    
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  gap: 1px;
+  padding: 2px;
+  background-color: #EEE;
+  color: white;
+  
+}
+
+.grid-container > div {
+  background-color: rgba(20,20,20, 0.8);
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+}
+.grid-container > div.itemHead {
+  background-color: rgba(0,0,0, 0.8);
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+  font-weight: bold;
+}
+article.rutinas{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+    
+}
+article.rutinast{
+    float: left;
+    width: 45%;
+    margin-right: 2%;
+
+}
+section.usrDis{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+}
+section.usrHech{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+}
+.bold{
+    font-weight: bold;
+}
+td.hoy{
+    background-color: cyan;
+    text-align: center;
+}
+td.si{
+    background-color: black;
+}
+td.hoysi{
+    background-color: red;
+}
+
+#calendar>thead>tr>th{
+    padding: 15px;
+    border: 1px solid red;
+    text-align:center;
+    background-color: lime;
+}
+#calendar>tbody>tr>td{
+    padding: 15px;
+    border: 1px solid red;
+    text-align:center;
+}
+#calendar{
+    border: 1px solid red;
+    
+}
