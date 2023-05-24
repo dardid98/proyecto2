@@ -32,7 +32,7 @@ if(isset($_REQUEST['Rechazar'])){
         </nav>
     </header>
     <form action="" method="post">
-        <main>
+        <main class="container cuerpo">
     <?php
 
 //include "./includes/comprobarSesion.php";
@@ -48,7 +48,7 @@ if(isset($_REQUEST['tarifa'])){
     
     ?>
         <section>
-            <p>Has elegido la tarifa <?php echo $res['NOMBRE_TARIFA']?>, esta tarifa se paga de manera anual, el importe es de <?php echo $res['PRECIO'] ?> euros</p>
+            <p class="text-light">Has elegido la tarifa <?php echo $res['NOMBRE_TARIFA']?>, esta tarifa se paga de manera anual, el importe es de <?php echo $res['PRECIO'] ?> euros</p>
         </section>    
         <section>
             <button type="submit" class="btn btn-primary" name="Pagar">Pagar</button>

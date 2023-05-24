@@ -25,6 +25,7 @@ include "../includes/crearTablas.php";
         
         <a href="tarifas.html">¡Consulta nuestros precios!</a>
         
+        <a href="acercade.html">Sobre nosotros</a>
     </nav>
     <main>
         <section>

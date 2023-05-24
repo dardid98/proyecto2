@@ -9,9 +9,9 @@ window.addEventListener("load", () => {
         inputPasswd.setAttribute("type", "password");
     })
     inputPasswd2.addEventListener("mouseenter", () => {
-        inputPasswd.setAttribute("type", "text");
+        inputPasswd2.setAttribute("type", "text");
     })
     inputPasswd2.addEventListener("mouseleave", () => {
-        inputPasswd.setAttribute("type", "password");
+        inputPasswd2.setAttribute("type", "password");
     })
 })

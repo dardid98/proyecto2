@@ -2,6 +2,8 @@ window.addEventListener("load",()=>{
 
     //var submEnt=document.getElementById("delEnt");
     var submUsu=document.getElementById("delUsu");
+    var submAct=document.getElementById("Activar");
+    var submDes=document.getElementById("Desactivar");
     //var submModEnt=document.getElementById("modEnt");
     
     submUsu.addEventListener("click", (event)=>{
@@ -20,25 +22,37 @@ window.addEventListener("load",()=>{
         
     })
     
-    /*submUsu.addEventListener("click", (event)=>{
-        event.preventDefault();
-        let consDatos=new FormData;
-        inputs.forEach(element => {
-            consDatos.append(element,element);
-        });
-        consDatos.append("delUsu", "delUsu");
-        postData(consDatos);
-        
-    })
-    submModEnt.addEventListener("click", (event)=>{
+    submAct.addEventListener("click", (event)=>{
         event.preventDefault();
         const js = document.querySelectorAll('input[name="id"]:checked');
         let inputs=[];
         js.forEach(element => {
             inputs.push(element.value);
         });
-        window.location="gestionUsuarios.php?id="+inputs+"&modEnt=modEnt";
-    })*/
+        var consDatos=new FormData;
+        inputs.forEach(element => {
+            consDatos.append(element,element);
+        });
+        consDatos.append("Activar", "Activar");
+        postData(consDatos);
+        
+    })
+    submDes.addEventListener("click", (event)=>{
+        event.preventDefault();
+        const js = document.querySelectorAll('input[name="id"]:checked');
+        let inputs=[];
+        js.forEach(element => {
+            inputs.push(element.value);
+        });
+        var consDatos=new FormData;
+        inputs.forEach(element => {
+            consDatos.append(element,element);
+        });
+        consDatos.append("Desactivar", "Desactivar");
+        postData(consDatos);
+        
+    })
+
 });
 
 async function postData(formattedFormData){

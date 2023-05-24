@@ -6,6 +6,7 @@ include "../includes/crearTablas.php";
 session_start();
 
 if(isset($_REQUEST['login'])){
+    //print_r($_REQUEST);
     $email=$_REQUEST['email'];
     $password=$_REQUEST['passwd'];
     

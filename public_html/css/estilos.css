@@ -4,6 +4,7 @@
 } 
 
 /* Páginas con formularios */
+
 header.Inicio{
     padding: 14px;
     border-bottom: 3px solid black;
@@ -64,6 +65,55 @@ header.Usuario{
 }
 .usuario{
     background-color: rgb(129, 255, 167);
+}
+article.rutinas{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+    
+}
+article.rutinast{
+    float: left;
+    width: 45%;
+    margin-right: 2%;
+
+}
+section.usrDis{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+}
+section.usrHech{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+}
+/* Calendario usuario */
+td.hoy{
+    background-color: cyan;
+    text-align: center;
+}
+td.si{
+    background-color: black;
+}
+td.hoysi{
+    background-color: red;
+}
+
+#calendar>thead>tr>th{
+    padding: 15px;
+    border: 1px solid red;
+    text-align:center;
+    background-color: lime;
+}
+#calendar>tbody>tr>td{
+    padding: 15px;
+    border: 1px solid red;
+    text-align:center;
+}
+#calendar{
+    border: 1px solid red;
+    
 }
 
 
@@ -136,6 +186,7 @@ header.Chat{
     overflow: auto;
     
 }
+/* Tablas */
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
@@ -159,54 +210,8 @@ header.Chat{
   padding: 5px;
   font-weight: bold;
 }
-article.rutinas{
-    float: left;
-    width: 45%;
-    margin-left: 2%;
-    
-}
-article.rutinast{
-    float: left;
-    width: 45%;
-    margin-right: 2%;
 
-}
-section.usrDis{
-    float: left;
-    width: 45%;
-    margin-left: 2%;
-}
-section.usrHech{
-    float: left;
-    width: 45%;
-    margin-left: 2%;
-}
-.bold{
-    font-weight: bold;
-}
-td.hoy{
-    background-color: cyan;
-    text-align: center;
-}
-td.si{
-    background-color: black;
-}
-td.hoysi{
-    background-color: red;
-}
-
-#calendar>thead>tr>th{
-    padding: 15px;
-    border: 1px solid red;
-    text-align:center;
-    background-color: lime;
-}
-#calendar>tbody>tr>td{
-    padding: 15px;
-    border: 1px solid red;
-    text-align:center;
-}
-#calendar{
-    border: 1px solid red;
-    
-}
+/* Panel usuario*/
+    .bold{
+        font-weight: bold;
+    }

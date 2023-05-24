@@ -5,22 +5,24 @@ include "mail.php";
 if(isset($_REQUEST['email']) && isset($_REQUEST['token'])){
     $email=$_REQUEST['email'];
     $token=$_REQUEST['token'];
-    print_r($_REQUEST);
+    //print_r($_REQUEST);
 
     $cons=$con->query("SELECT * FROM RECUPERAR WHERE EMAIL='$email' AND TOKEN='$token'");
     //echo $cons->num_rows;
     if(mysqli_num_rows($cons)!=0){
         
-        //echo "hola";
         $con->query("UPDATE USUARIOS SET ACTIVADO='S' WHERE EMAIL='$email'");
         $con->query("DELETE FROM RECUPERAR WHERE EMAIL='$email' AND TOKEN='$token'");
-    }
-
-    
-        echo "Tu usuario ha sido activado, ya puedes hacer login";
+        //echo "Tu usuario ha sido activado, ya puedes hacer login";
+        header("location: login.php");
         ?>
             <a href="index.php">Inicio</a>
         <?php
+    }else{
+        echo "Error";
+    }
+
+    
 }else{
 
     
@@ -49,7 +51,7 @@ if(isset($_REQUEST['email']) && isset($_REQUEST['token'])){
     <div style="text-align:center; background-color:#ccc">
     <p>Pulse sobre el enlace para activar su usuario</p>
     <p> Haga click <a 
-    href='.$enlaceRemoto.'> 
+    href='.$enlace.'> 
     aqui</a> para activar su usuario y empezar a disfrutar de los servicios del gym.</p>
     </div>
     </body>

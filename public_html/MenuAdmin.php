@@ -77,6 +77,8 @@ if(isset($_REQUEST['volver'])){
             ?>
             </div>
                 <button class="btn btn-danger" type="submit" value="Eliminar" id="delUsu"> Eliminar</button>
+                <button class="btn btn-secondary" type="submit" id="Activar"> Activar Usuario</button>
+                <button class="btn btn-secondary" type="submit" id="Desactivar"> Desactivar Usuario</button>
                 <button class="btn btn-info" type="submit" name="volver" value="Cerrar Sesion"> Cerrar Sesion</button>
                 <a href="CrearUsuario.html" class="btn btn-warning">Añadir Entrenador a la Base de Datos</a>
             </article>

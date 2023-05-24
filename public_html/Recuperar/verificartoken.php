@@ -1,24 +1,32 @@
 <?php 
-require "./../includes/loginDatos.php";
+require "../../includes/loginDatos.php";
 
 date_default_timezone_set("europe/madrid");
+//print_r($_REQUEST);
 if(!isset($_REQUEST['email'])||!isset($_REQUEST['token'])||!isset($_REQUEST['codigo']) ){
     header("location: ../index.php");
 }else if(isset($_REQUEST['cambiar'])){
-    echo "has pulsado en cambiar";
+    //echo "has pulsado en cambiar";
+    //print_r($_REQUEST);
     $email=$_REQUEST['email'];
     $p1=$_REQUEST['p1'];
     $p2=$_REQUEST['p2'];
     if($p1==$p2){
-        $consulta=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email' ");
+        //echo "coinciden";
+        $p1=password_hash($p1,PASSWORD_DEFAULT);
+        $consulta=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email' ") or die($con->error);
         if($consulta->num_rows==0){
-            echo "Error";
-        }
+            //echo "Error";
         }else{
             $con->query("UPDATE USUARIOS SET CONTRASENA='$p1' WHERE EMAIL='$email' ")or die($con->error);
+            //echo "por qué";
         }
-    $con->query("DELETE FROM RECUPERAR WHERE EMAIL='$email'");
-    header("location: ../login.html");
+        $con->query("DELETE FROM RECUPERAR WHERE EMAIL='$email'");
+        //header("location: ../login.html");
+        echo "Tu contraseña ha sido cambiada con éxito"?> <a href="../login.html">Volver a login</a><?php
+    }else{   
+        echo "Las contraseñas introducidas no coinciden, inténtalo de nuevo";
+    }
 }else{
        $email =$_REQUEST['email'];
        $token =$_REQUEST['token'];
@@ -63,6 +71,8 @@ if(!isset($_REQUEST['email'])||!isset($_REQUEST['token'])||!isset($_REQUEST['cod
                             <label for="c2" class="form-label text-danger">Confirmar Contraseña: </label>
                             <input type="password" class="form-control" id="p2" name="p2">
                             <input type="hidden" class="form-control" id="c" name="email" value="<?php echo $email?>">
+                            <input type="hidden" class="form-control" id="c" name="token" value="<?php echo $token?>">
+                            <input type="hidden" class="form-control" id="c" name="codigo" value="<?php echo $codigo?>">
 
                         </div>
                     

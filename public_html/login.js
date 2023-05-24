@@ -42,7 +42,7 @@ async function postData(formattedFormData){
         body: formattedFormData
     });
     const data=await resp.text();
-
+    //alert(data);
     if(data=="usergim"){
         window.location.href="MenuGimnasio.php";
     }else if(data=="usermon"){

@@ -18,6 +18,21 @@ if(isset($_REQUEST['delUsu'])){
     }
 }
 
+if(isset($_REQUEST['Activar'])){
+    //print_r($_REQUEST);
+    foreach ($_REQUEST as $key => $value) {
+        //echo $value;
+        $con->query("UPDATE USUARIOS SET ACTIVADO='S' WHERE ID=$value");
+    }
+}
+if(isset($_REQUEST['Desactivar'])){
+    //print_r($_REQUEST);
+    foreach ($_REQUEST as $key => $value) {
+        //echo $value;
+        $con->query("UPDATE USUARIOS SET ACTIVADO='N' WHERE ID=$value");
+    }
+}
+
 /*if(isset($_REQUEST['modEnt'])){
     $id=$_REQUEST['id'];
     $registro=$con->query("SELECT * FROM ENTRENADORES WHERE ID_ENTRENADOR='$id'");
