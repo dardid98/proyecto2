@@ -139,4 +139,18 @@ if(isset($_REQUEST['registro'])){
 
     
 }
+
+if(isset($_REQUEST['comprobar'])){
+    //print_r($_REQUEST);
+    $email=$_REQUEST['email'];
+    $comprobar=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email'");
+    $comprobar=$comprobar->fetch_assoc();
+    if($comprobar==false){
+        $comprobar="nada";
+        echo $comprobar;
+    }else{
+        $comprobar=json_encode($comprobar);
+        echo $comprobar;
+    }
+}
 ?>
