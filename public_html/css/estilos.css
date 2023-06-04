@@ -1,6 +1,8 @@
 /* Contenedor global */
 .container{
     padding-top: 2%;
+    /*overflow: hidden;*/
+
 } 
 
 /* Páginas con formularios */
@@ -66,6 +68,8 @@ header.Usuario{
 .usuario{
     background-color: rgb(129, 255, 167);
 }
+
+
 article.rutinas{
     float: left;
     width: 45%;
@@ -87,20 +91,49 @@ section.usrHech{
     float: left;
     width: 45%;
     margin-left: 2%;
+    
 }
 /* Calendario usuario */
+#leyenda{
+    background-color: lightgrey;
+    margin-bottom: 10px;
+    padding: 3px;
+    width: 200px;
+}
+#leyenda>div>th{
+    margin: 10px;
+}
+
+div.col{
+    border: 2px solid black;
+    display: inline;
+    margin-right: 10px;
+}
+div.diaSi{
+    background-color: lightblue;
+    color:lightblue;
+}
+div.diaAc{
+    background-color: pink;
+    color: pink;
+}
+div.diaAcSi{
+    background-color: palevioletred;
+    color: palevioletred;
+}
+
 td.hoy{
-    background-color: cyan;
+    background-color: pink;
     text-align: center;
 }
 td.si{
-    background-color: black;
+    background-color: lightblue;
 }
 td.hoysi{
-    background-color: red;
+    background-color: palevioletred;
 }
 
-#calendar>thead>tr>th{
+#calendar>tbody>tr>th{
     padding: 15px;
     border: 1px solid red;
     text-align:center;
@@ -179,7 +212,7 @@ header.Chat{
 .mensajes{
     padding: 5px;
     background-color: white;
-    height: 300px;
+    height: 500px;
     overflow: hidden;
 }
 .mensajes:hover{

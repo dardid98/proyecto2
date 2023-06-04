@@ -17,7 +17,7 @@
     </header>
     
     <main class="d-flex justify-content-center align-items-center container">
-        <form action="login.php" method="post" id="form">
+        <form action="login.php" method="post" id="form" enctype="multipart/form-data">
             <article class="cuerpo">
                 <section class="mb-3">
                     <h1 class="text-danger">¡Introduce tus datos para registrarte! </h1>
@@ -53,9 +53,15 @@
                         </select>
                     </div>
                 </section>
+                <section id="imgs2">
+                    <label for="imgn" class="text-light">Seleccione su Imagen de Perfil </label>
+                    <div>
+                        <input type="file" src="imgn" alt="imagen de perfil" name="imgn" id="imgn" class="text-light">
+                    </div>
+                </section>
                 <section class="mb-2">
                     <label class="text-light" for="persona">Es usted una persona? </label>
-                    <div>
+                    <div id="pers">
                         <select class="custom-select custom-select-lg" name="persona" id="persona">
                             <option value="No">... </option>
                             <option value="No">No</option>
@@ -64,7 +70,7 @@
                     </div>
                 </section>
                 <section class="mb-2">
-                    <div>
+                    <div id="priv2">
                     <label class="text-light" for="privacidad">Confirme que acepta que sus datos sean usados de acuerdo a nuestra política de privacidad</label>
                         <input type="checkbox" name="privacidad" id="privacidad">
                     </div>

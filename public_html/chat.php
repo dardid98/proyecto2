@@ -67,7 +67,8 @@ if(isset($_REQUEST['mostrar'])){
     //print_r($mensajes);
     //$mensa=array_reverse($mensa);
     $mensa=json_encode($mensa);
-    print_r($mensa);
+    header('Content-type:application/json;charset=utf-8');
+    echo $mensa;
     return $mensa;
 }
 
@@ -103,11 +104,9 @@ if(isset($_REQUEST['mostrar'])){
                     <input type="text" class="form-control" id="mensaje" name="mensaje">
                 </div>
                 <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
+                    <a href="<?php echo $varSalida?>" class="btn btn-secondary">Salir</a>
                 </div>
-            </form>
-            <form action="" method="post">
-                <a href="<?php echo $varSalida?>" class="btn btn-secondary">Salir</a>
             </form>
         </article>
     </main>

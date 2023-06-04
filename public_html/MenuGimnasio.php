@@ -7,6 +7,7 @@ include "../includes/crearTablas.php";
 
 $fech2=$con->query("SELECT * FROM USUARIOS WHERE EMAIL='$email' ");
 $fech2=$fech2->fetch_assoc();
+$imgn=$fech2["RUTA_IMAGEN"];
 $id_tar=$fech2['ID_TARIFA'];
 if($fech2['TIPO_USUARIO']=="ENTRENADOR" || $fech2['TIPO_USUARIO']=="ADMIN"){
     header("location: index.php");
@@ -69,6 +70,7 @@ if(isset($req['abrir'])){
     <header class="Usuario">
         <nav>
             <ul>
+                <li><img src="<?php echo "imagenes/".$imgn ?>" class="imgperf" ></li>
                 <li><a href="index.php">GymBd</a></li>
                 <li><a href="modificarDatos.php">Modificar Tus Datos</a></li>
                 <?php if($id_tar==1 ||$id_tar==2){
@@ -133,6 +135,12 @@ if(isset($req['abrir'])){
                 </section>
                 <section class="usrHech">
                     <h1>Registro Mensual: </h1>
+                    <div id="leyenda">
+                        <div><th>Leyenda de la tabla:</th></div>
+                        <div><div class="col diaAc">Mll</div>Día actual</div>
+                        <div><div class="col diaSi">Mll</div>Día en el que hiciste, al menos, una rutina</div>
+                        <div><div class="col diaAcSi">Mll</div>Día actual + has hecho una rutina al menos.</div>
+                    </div>
                     <form action="" method="post" id="form2">
 
                 <?php
@@ -144,17 +152,12 @@ if(isset($req['abrir'])){
                         
                         ?> 
                         <table id="calendar">
-                            <caption></caption>
-                            <thead>
-                                <tr>
-                                    <th>L</th><th>M</th><th>X</th><th>J</th><th>V</th><th>S</th><th>D</th>
-                                </tr>
-                                
-                            </thead>
+                            
                             <tbody id="cuerpoCal">
                                 
                             </tbody>
                         </table>
+                        
                         </div>
                     </div>
                     

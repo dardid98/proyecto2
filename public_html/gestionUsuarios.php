@@ -14,6 +14,11 @@ if(isset($_REQUEST['crearUsu'])){
 if(isset($_REQUEST['delUsu'])){
     //print_r($_REQUEST);
     foreach ($_REQUEST as $key => $value) {
+        $con->query("DELETE FROM CHAT WHERE ID_EMISOR=$value");
+        $con->query("DELETE FROM CHAT WHERE ID_RECEPTOR=$value");
+        $con->query("DELETE FROM REGISTRO_RUTINAS WHERE ID_USUARIO=$value");
+        $con->query("DELETE FROM REGISTRO_RUTINAS WHERE ID_RUTINA IN(SELECT ID_RUTINA FROM RUTINAS WHERE ID_ENTRENADOR=$value)");
+        $con->query("DELETE FROM RUTINAS WHERE ID_ENTRENADOR=$value");
         $con->query("DELETE FROM USUARIOS WHERE ID=$value");
     }
 }

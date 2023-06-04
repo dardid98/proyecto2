@@ -61,6 +61,7 @@ if(isset($_REQUEST['Tarifas'])){
 
 
 if(isset($_REQUEST['registro'])){
+    include "../includes/credencialesFtp.php";
     //print_r($_REQUEST);
     //echo "no";
     $email=$_REQUEST['email'];
@@ -88,6 +89,9 @@ if(isset($_REQUEST['registro'])){
     $passwd=password_hash($passwd,PASSWORD_DEFAULT);
     $fecha=date_create();
     date_add($fecha, date_interval_create_from_date_string("12 month"));
+    $imagen=$_FILES['imgn']['name'];
+    //move_uploaded_file($_FILES['imgn']['tmp_name'], "imagenes/".$_FILES['imgn']['name']);
+    ftp_put($con_id,"htdocs/public_html/imagenes/".$_FILES['imgn']['name'], $_FILES['imgn']['tmp_name'],FTP_BINARY);
 
     $fecha=$fecha->format('Y-m-d H:i:s');
     //print_r($fecha);
@@ -103,7 +107,10 @@ if(isset($_REQUEST['registro'])){
             if(!$mail->send()){
                 //echo "Mailer Error: " . $mail->ErrorInfo;
                 //$enviado=false;
-                echo $respuesta="error";
+                echo $respuesta="El correo introducido no existe, vuelve a intentarlo";
+                ?> 
+                    <a href="registro.html">Volver a Registro</a>
+                <?php
             }else{
                 //echo "Message sent!";
                 $enviado=true;

@@ -61,6 +61,9 @@ async function mostrarCalendario(year,month,cadena)
         //console.log(ultimoDiaMes);
         var datosTabla=new Array();
         var last_cell=primerDiaSemana+ultimoDiaMes;
+        //resultado+="<td>L</td><td>M</td><td>X</td><td>J</td><td>V</td><td>S</td><td>D</td></tr>"
+        resultado+="<th>L</th><th>M</th><th>X</th><th>J</th><th>V</th><th>S</th><th>D</th></tr>";
+        //resultado="<tr>";
         //var ejer=false;
      
         // hacemos un bucle hasta 42, que es el máximo de valores que puede
@@ -79,9 +82,9 @@ async function mostrarCalendario(year,month,cadena)
             }else{
                 // mostramos el dia
                 var egresion=(compruebaDia(dia, month, year, fechasCompl));
-                console.log((await egresion));
+                //console.log((await egresion));
                 if(dia==actual.getDate() && month==actual.getMonth()+1 && year==actual.getFullYear() && !await egresion) {
-                    console.log(egresion);
+                    //console.log(egresion);
                     resultado+="<td class='hoy'>"+dia+"</td>";
                 }
                 else if(dia==actual.getDate() && month==actual.getMonth()+1 && year==actual.getFullYear() && await egresion){
@@ -140,7 +143,7 @@ async function mostrarCalendario(year,month,cadena)
         formul.appendChild(h3);
         formul.appendChild(h4);
 */
-        document.getElementById("calendar").getElementsByTagName("tbody")[0].innerHTML=resultado;
+        document.getElementById("cuerpoCal").innerHTML=resultado;
     }
 
     async function compruebaDia(dia, mes, anyo, fechas){
